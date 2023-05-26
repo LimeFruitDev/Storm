@@ -67,7 +67,7 @@ public partial class ItemManager : Entity
 			InventoryId = WorldInventoryId
 		};
 
-		// todo: log
+		Log.Info($"Created item {type}({uniqueId}).");
 		ItemInstances.Add(uniqueId, itemInstance);
 		return itemInstance;
 	}
@@ -77,8 +77,8 @@ public partial class ItemManager : Entity
 		if (!ItemInstances.ContainsKey(item.UniqueId))
 			return false;
 
-		ItemInstances.Remove(item.UniqueId);
 		// todo: send delete RPC, log
+		ItemInstances.Remove(item.UniqueId);
 		return true;
 	}
 }
