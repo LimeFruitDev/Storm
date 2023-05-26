@@ -8,7 +8,7 @@ public class SaveCharacterRpc : BaseRpc
 {
 	public SaveCharacterRpc(Character character)
 	{
-		MessageType = "character_save";
+		MessageType = "saveCharacter";
 		CharacterId = character.UniqueId;
 		Name = character.Name;
 		Model = character.Model;

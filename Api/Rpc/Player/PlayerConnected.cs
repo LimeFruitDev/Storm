@@ -6,7 +6,7 @@ public class PlayerConnectedRpc : BaseRpc
 {
 	public PlayerConnectedRpc(Player player)
 	{
-		MessageType = "player_connected";
+		MessageType = "playerConnected";
 		SteamName = player.SteamName;
 		SteamId = player.SteamId;
 	}

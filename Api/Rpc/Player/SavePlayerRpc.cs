@@ -7,7 +7,7 @@ public class SavePlayerRpc : BaseRpc
 {
 	public SavePlayerRpc(Player player)
 	{
-		MessageType = "player_save";
+		MessageType = "savePlayer";
 		Data = JsonSerializer.Serialize(player.Data);
 		SteamName = player.SteamName;
 		Whitelist = JsonSerializer.Serialize(player.Whitelist);

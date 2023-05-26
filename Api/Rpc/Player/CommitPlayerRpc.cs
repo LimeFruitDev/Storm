@@ -7,7 +7,7 @@ public class CommitPlayerRpc : BaseRpc
 {
 	public CommitPlayerRpc(Player player)
 	{
-		MessageType = "player_commit";
+		MessageType = "commitPlayer";
 		PlayerId = player.UniqueId;
 		SteamName = player.SteamName;
 		SteamId = player.SteamId;

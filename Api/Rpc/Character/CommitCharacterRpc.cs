@@ -7,7 +7,7 @@ public class CommitCharacterRpc : BaseRpc
 {
 	public CommitCharacterRpc(Character character)
 	{
-		MessageType = "character_commit";
+		MessageType = "commitCharacter";
 		CharacterId = character.UniqueId;
 		PlayerId = character.Player.UniqueId;
 		Name = character.Name;

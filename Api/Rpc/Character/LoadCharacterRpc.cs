@@ -7,7 +7,7 @@ public class LoadCharacterRpc : BaseRpc
 {
 	public LoadCharacterRpc(Character character)
 	{
-		MessageType = "character_load";
+		MessageType = "loadCharacter";
 		CharacterId = character.UniqueId;
 	}
 
