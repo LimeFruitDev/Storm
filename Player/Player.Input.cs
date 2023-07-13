@@ -25,8 +25,8 @@ public partial class Player
 		set => EyeLocalRotation = Transform.RotationToLocal(value);
 	}
 
-	[Net, Predicted]  public PawnController Controller { get; set; }
-	[Net, Predicted]  public PawnController DevController { get; set; }
+	[Net, Predicted] public PawnController Controller { get; set; }
+	[Net, Predicted] public PawnController DevController { get; set; }
 
 	public virtual PawnController GetActiveController()
 	{
