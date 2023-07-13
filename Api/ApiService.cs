@@ -12,7 +12,6 @@ public static class ApiService
 	private static ApiConfig _config;
 	private static WebSocket _socket;
 	private static ulong _currentMessageId;
-	private static Mutex _mutex;
 	private static readonly Dictionary<ulong, Action<ulong, string>> _callbacks = new();
 	public static Logger Log = new("ApiService");
 
@@ -38,7 +37,6 @@ public static class ApiService
 
 		try
 		{
-			_mutex = new Mutex();
 			_socket = new WebSocket(_config.MaxMessageSize);
 			await _socket.Connect($"{(_config.Encrypted ? "wss" : "ws")}://{_config.Host}:{_config.Port}/");
 
@@ -64,28 +62,30 @@ public static class ApiService
 
 		Log.Info("Disconnecting!");
 
-		_mutex.Dispose();
-		_mutex = null;
 		_socket.Dispose();
 		_socket = null;
 		Status = ApiStatus.Disconnected;
 	}
 
-	public static async void SendMessage<T>(T message) where T : BaseRpc
+#pragma warning disable CA2012
+	public static void SendMessage<T>(T message) where T : BaseRpc
 	{
-		_mutex.WaitOne();
-		await _socket.Send(JsonSerializer.Serialize(message));
-		_mutex.ReleaseMutex();
+		lock (_socket)
+		{
+			_socket.Send(JsonSerializer.Serialize(message));
+		}
 	}
 
-	public static async void SendMessage<T>(T message, Action<ulong, string> callback) where T : BaseRpc
+	public static void SendMessage<T>(T message, Action<ulong, string> callback) where T : BaseRpc
 	{
 		_callbacks[message.UniqueId] = callback;
 
-		_mutex.WaitOne();
-		await _socket.Send(JsonSerializer.Serialize(message));
-		_mutex.ReleaseMutex();
+		lock (_socket)
+		{
+			_socket.Send(JsonSerializer.Serialize(message));
+		}
 	}
+#pragma warning restore CA2012
 
 	public static ulong GetNextMessageId()
 	{
