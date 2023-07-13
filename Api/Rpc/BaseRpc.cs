@@ -7,7 +7,7 @@ public class BaseRpc
 	public BaseRpc()
 	{
 		UniqueId = ApiService.GetNextMessageId();
-		MessageType = "base_rpc";
+		MessageType = "baseRpc";
 	}
 
 	[JsonPropertyName("uniqueId")] public ulong UniqueId { get; set; }
