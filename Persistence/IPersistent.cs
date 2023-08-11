@@ -4,5 +4,5 @@ namespace Storm;
 
 public interface IPersistent
 {
-	public Task Save();
+	public void Save();
 }

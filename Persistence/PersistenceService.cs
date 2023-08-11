@@ -14,9 +14,9 @@ public static class PersistenceService
 		await GameTask.RunInThreadAsync(SaveAllTask);
 	}
 
-	private static async void SaveAllTask()
+	private static void SaveAllTask()
 	{
-		foreach (var persistentObject in PersistentObjects)
-			await persistentObject.Save();
+		foreach (var persistentObject in PersistentObjects) 
+			persistentObject.Save();
 	}
 }

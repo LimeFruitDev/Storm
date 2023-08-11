@@ -8,10 +8,10 @@ public partial class Character : EntityComponent
 {
 	public Character()
 	{
-		PersistentObject = new PersistentObject<Character, CommitCharacterRpc, SaveCharacterRpc>(this);
+		PersistentObject = new PersistentObject<Character, SaveCharacterRpc>(this);
 	}
 
-	public PersistentObject<Character, CommitCharacterRpc, SaveCharacterRpc> PersistentObject { init; get; }
+	public PersistentObject<Character, SaveCharacterRpc> PersistentObject { init; get; }
 	[Net] public Guid UniqueId { get; set; }
 	[Net] public Player Player { get; set; }
 	[Net] public new string Name { get; set; }

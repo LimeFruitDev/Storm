@@ -11,10 +11,10 @@ public partial class Player : AnimatedEntity
 {
 	public Player()
 	{
-		PersistentObject = new PersistentObject<Player, CommitPlayerRpc, SavePlayerRpc>(this);
+		PersistentObject = new PersistentObject<Player, SavePlayerRpc>(this);
 	}
 
-	public PersistentObject<Player, CommitPlayerRpc, SavePlayerRpc> PersistentObject { init; get; }
+	public PersistentObject<Player, SavePlayerRpc> PersistentObject { init; get; }
 	[Net] public Guid UniqueId { get; set; }
 
 	public string SteamName => Client.Name;

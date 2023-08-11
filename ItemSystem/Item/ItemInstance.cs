@@ -8,10 +8,10 @@ public partial class ItemInstance : BaseNetworkable
 {
 	public ItemInstance()
 	{
-		PersistentObject = new PersistentObject<ItemInstance, CommitItemRpc, SaveItemRpc>(this);
+		PersistentObject = new PersistentObject<ItemInstance, SaveItemRpc>(this);
 	}
 
-	public PersistentObject<ItemInstance, CommitItemRpc, SaveItemRpc> PersistentObject { init; get; }
+	public PersistentObject<ItemInstance, SaveItemRpc> PersistentObject { init; get; }
 	[Net] public Guid UniqueId { get; set; }
 	[Net] public ItemData Data { get; set; }
 	[Net] public Guid InventoryId { get; set; }
