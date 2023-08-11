@@ -9,12 +9,12 @@ public class SaveItemRpc : BaseRpc
 	public SaveItemRpc(ItemInstance item)
 	{
 		MessageType = "saveItem";
-		UniqueId = item.UniqueId;
+		ItemId = item.UniqueId;
 		InventoryId = item.InventoryId;
 		Properties = JsonSerializer.Serialize(item.Data.Properties);
 	}
 
-	[JsonPropertyName("uniqueId")] public Guid UniqueId { get; set; }
+	[JsonPropertyName("itemId")] public Guid ItemId { get; set; }
 	[JsonPropertyName("inventoryId")] public Guid InventoryId { get; set; }
 	[JsonPropertyName("properties")] public string Properties { get; set; }
 }
