@@ -9,6 +9,11 @@ public static class PersistenceService
 	public static List<IPersistent> PersistentObjects = new();
 #pragma warning restore CA2211
 
+	public static async void SaveSingle(IPersistent persistent)
+	{
+		await GameTask.RunInThreadAsync(persistent.Save);
+	}
+
 	public static async void SaveAll()
 	{
 		await GameTask.RunInThreadAsync(SaveAllTask);

@@ -17,6 +17,11 @@ public class PersistentObject<T, SaveRpc> : IPersistent
 		PersistenceService.PersistentObjects.Add(this);
 	}
 
+	public void MarkDirty()
+	{
+		PersistenceService.SaveSingle(this);
+	}
+
 	public void Save()
 	{
 		Game.AssertServer();
