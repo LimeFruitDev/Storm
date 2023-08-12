@@ -3,7 +3,7 @@ using Sandbox;
 
 namespace Storm;
 
-public static class CharCreate
+public static partial class ConCommands
 {
 	[ConCmd.Server("storm.character.create")]
 	public static void CmdCreateCharacter(string name, string model, string faction, bool switchTo)
