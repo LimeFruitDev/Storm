@@ -9,6 +9,7 @@ public partial class Character : EntityComponent
 	public Character()
 	{
 		PersistentObject = new PersistentObject<Character, SaveCharacterRpc>(this);
+		Data = new Dictionary<string, object>();
 	}
 
 	public PersistentObject<Character, SaveCharacterRpc> PersistentObject { init; get; }
