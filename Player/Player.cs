@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Sandbox;
 
 namespace Storm;
@@ -12,10 +14,14 @@ public partial class Player : AnimatedEntity
 	public Player()
 	{
 		PersistentObject = new PersistentObject<Player, SavePlayerRpc>(this);
+		Characters = new List<Character>();
 	}
 
 	public PersistentObject<Player, SavePlayerRpc> PersistentObject { init; get; }
 	[Net] public Guid UniqueId { get; set; }
+
+	// TODO: Move to different file?
+	[Net] public IList<Character> Characters { get; set; }
 
 	public string SteamName => Client.Name;
 	public string SteamId => Client.SteamId.ToString();
