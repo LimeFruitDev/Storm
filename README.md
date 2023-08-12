@@ -1,5 +1,8 @@
 # Storm
-Storm is a work-in-progress roleplay framework for S&box. It is not currently in a usable stage, so do not attempt to use it.
+Storm is a work-in-progress roleplay framework for S&box.
+
+> ![IMPORTANT]
+> This framework is in development and is not yet usable. Please do not use this for anything aside from development purposes.
 
 ### Layout
 The framework is laid out in three main components:
