@@ -1,7 +1,7 @@
 # Storm
 Storm is a work-in-progress roleplay framework for S&box.
 
-> ![IMPORTANT]
+> [!IMPORTANT]
 > This framework is in development and is not yet usable. Please do not use this for anything aside from development purposes.
 
 ### Layout
