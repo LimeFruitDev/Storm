@@ -13,10 +13,11 @@ public static class ApiService
 	private static WebSocket _socket;
 	private static ulong _currentMessageId;
 	private static readonly Dictionary<ulong, Action<ulong, string>> _callbacks = new();
-	public static Logger Log = new("ApiService");
+	public static readonly Logger Log = new("ApiService");
 
 	public static ApiStatus Status { get; private set; } = ApiStatus.Uninitialized;
 
+	[GameEvent.Initialize.Server]
 	public static async void Initialize()
 	{
 		Game.AssertServer();
@@ -62,8 +63,11 @@ public static class ApiService
 
 		Log.Info("Disconnecting!");
 
-		_socket.Dispose();
-		_socket = null;
+		lock (_socket)
+		{
+			_socket.Dispose();
+			_socket = null;
+		}
 		Status = ApiStatus.Disconnected;
 	}
 
