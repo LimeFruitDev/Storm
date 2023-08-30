@@ -47,6 +47,7 @@ public static partial class ConCommands
 		player.Characters.Add(character);
 		character.PersistentObject.MarkDirty();
 
-		// TODO: Implement switchTo
+		if (switchTo)
+			player.SelectCharacter(character.UniqueId);
 	}
 }
