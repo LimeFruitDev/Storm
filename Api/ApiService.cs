@@ -32,6 +32,7 @@ public static class ApiService
 		if (_config == null)
 		{
 			Status = ApiStatus.BadConfig;
+			Log.Warning("Failed to load configuration file.");
 			return;
 		}
 
@@ -97,7 +98,15 @@ public static class ApiService
 
 	private static ApiConfig LoadConfig()
 	{
-		throw new NotImplementedException();
+		try
+		{
+			return FileSystem.Data.ReadJson<ApiConfig>("cfg/api.json");
+		}
+		catch (Exception e)
+		{
+			Log.Error(e, "Failed to load configuration file.");
+			return null;
+		}
 	}
 
 	private static void RawDataReceivedHandler(Span<byte> data)
