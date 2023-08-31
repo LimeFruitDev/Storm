@@ -24,14 +24,14 @@ public static partial class ConCommands
 		if (!FactionManager.Instance.Factions.TryGetValue(faction, out var factionData))
 		{
 			Log.Error(
-				$"Tried to create a character on invalid faction \"{faction}\" for player {player.SteamName}({player.UniqueId})<{player.SteamId}>");
+				$"Tried to create a character on invalid faction \"{faction}\" for player {player.VerboseName}");
 			return;
 		}
 
 		if (!factionData.Models.Contains(model))
 		{
 			Log.Error(
-				$"Player {player.SteamName}({player.UniqueId})<{player.SteamId}> tried to create a character in the \"{faction}\" faction with unsupported model \"{model}\"!");
+				$"Player {player.VerboseName} tried to create a character in the \"{faction}\" faction with unsupported model \"{model}\"!");
 			return;
 		}
 
