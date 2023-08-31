@@ -13,7 +13,7 @@ public partial class Player : AnimatedEntity
 {
 	public Player()
 	{
-		PersistentObject = new PersistentObject<Player, SavePlayerRpc>(this);
+		PersistentObject = new PersistentObject<Player, SavePlayerRpc>(this, true);
 		Characters = new List<Character>();
 	}
 
